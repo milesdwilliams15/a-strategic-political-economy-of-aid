@@ -1,0 +1,1386 @@
+---
+title: "A Strategic Political Economy of Aid"
+author: "Miles D. Williams"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  pdf_document:
+    number_sections: yes
+classoption: fleqn
+fontfamily: mathpazo
+fontsize: 12pt
+bibliography: "`r here::here('00_cites/ref.bib')`"
+#link-citations: yes
+linkcolor: blue
+header-includes:
+  - \usepackage{amsmath}
+  - \usepackage{setspace}
+  - \setlength{\mathindent}{15pt}
+  - \setlength\parindent{24pt}
+  - \setlength{\parskip}{0.0pt plus 1.0pt}
+  - \doublespacing
+  - \newtheorem{theorem}{Theorem}[section]
+  - \newtheorem{lemma}[theorem]{Lemma}
+  - \newtheorem{proposition}[theorem]{Proposition}
+  - \newtheorem{corollary}[theorem]{Corollary}
+  - \newenvironment{proof}[1][Proof]{\begin{trivlist}
+      \item[\hskip \labelsep {\bfseries Proof}]}{\end{trivlist}}
+  - \newenvironment{definition}[1][Definition]{\begin{trivlist}
+      \item[\hskip \labelsep {\bfseries 1}]}{\end{trivlist}}
+  - \newenvironment{example}[1][Example]{\begin{trivlist}
+      \item[\hskip \labelsep {\bfseries 1}]}{\end{trivlist}}
+  - \newenvironment{remark}[1][Remark]{\begin{trivlist}
+      \item[\hskip \labelsep {\bfseries 1}]}{\end{trivlist}}
+  - \newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \floatplacement{figure}{!t}
+  - \usepackage{caption}\DeclareCaptionLabelFormat{ChapterTables}{Table 1.#2}
+  - \usepackage{caption}\DeclareCaptionLabelFormat{ChapterFigures}{Figure 1.#2}
+  - \usepackage{caption}\DeclareCaptionLabelFormat{AppendixTables}{Table A.1.#2}
+  - \usepackage{caption}\DeclareCaptionLabelFormat{AppendixFigures}{Figure A.1.#2}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F,
+                      message = F,
+                      warning = F,
+                      fig.pos = "!t")
+library(tidyverse)
+library(ggtext)
+library(kableExtra)
+library(here)
+```
+
+
+
+
+# Introduction
+
+Some decades ago, Hans @morgenthau1962 remarked that "[o]f the seeming and real innovations which the modern age has introduced into the practice of foreign policy, none has proven more baffling to both understanding and action than foreign aid" (301). In the time since his writing, IR scholars have spilled a great deal of ink attempting to make aid a little more comprehensible. These efforts have revealed both timeless and dynamic patterns in international aid, providing clues about the broader foreign policy objectives of donor governments.
+
+The modal empirical strategy taken by scholars aligns quite well with a ubiquitous quote from US President Joe Biden: "Don't tell me what you value. Show me your budget, and I'll tell you what you value."^["Biden's Remarks on McCain's Policies" reported in *The New York Times* on Sep. 15, 2008. Accessed on Mar. 25, 2021. <https://www.nytimes.com/2008/09/15/us/politics/15text-biden.html>] By examining correlations between a selection of covariates and flows of international aid, it is believed that we can draw inferences about what donor governments value in their foreign policies. International aid has long been a tool that powerful countries wield to effect their designs in international politics. With respect to US foreign policy alone, a cottage industry of studies has used US foreign aid allocations to test competing theories about US goals on the world stage.^[See @fleckKilby2010; @meernikEtAl1998; @mckinlayLittle1977; @mckinlayLittle1979] This line of inquiry extends to Western and Western-allied donor governments and, more recently, to the development financing of the People's Republic of China.^[For an authoritative summary in the Chinese case, see @dreherEtAl2022.]
+
+While valuable, most empirical work proceeds implicitly on the basis of a theoretical perspective that ignores *strategic interdependence* in the aid allocation decisions of donor governments. This is problematic, because to the extent that countries seek to accomplish their foreign policy goals through international aid, they must do so in the face of the aid allocation decisions of one another. Within the rationalist framework most often adopted by scholars who study the determinants of economic assistance, the fact that donors do not operate in a vacuum implies that they have rational incentives to adjust how they distribute aid in light how others distribute theirs. What follows from this is simple: donor governments will often give foreign aid in ways that *deviate* from how they would give aid on the basis of their foreign policy objectives alone.
+
+*What are the implications of strategic interdependence in international aid?* In this study, I develop and analyze a theoretical model that helps refine understanding of the implications of strategic interdependence in the political economy of aid. 
+
+The model, in its construction, is founded upon some relatively straightforward conceptions about the political economy of international aid. I start from the presumption that aid allocation is an arena in which donor states (wealthy countries that allocate aid) compete to maximize foreign policy goals realized through giving aid to recipient states (developing countries that receive aid). I introduce a two-donor, two-recipient model that captures key moving pieces of the strategic environment that donors face. In this model, countries have finite resources available to disburse in the form of aid, and they must choose how to distribute their limited aid budget between recipients. As they make this decision, donor choices are influenced (1) by the relative weight they place on realizing foreign policy interests by giving aid to a recipient and (2) by the *foreign policy externality* generated by the other donor's aid allocations. A foreign policy externality captures the impact that one donor's aid has on another donor's ability to get what it wants out of its aid allocation to a recipient. Such externalities may be either *positive* or *negative*. If the former, donors reap mutually beneficial foreign policy gains from their foreign aid. If the latter, donors obtain rival foreign policy gains. It is possible for donors to obtain rival gains with respect to one recipient, and mutually beneficial gains with respect to the other.
+
+While the substance of donor goals is surely important, for the sake of model building I ignore the substance to focus exclusively on the implications that the *strategic valence* of donor goals has for donor best-responses. Relative to other formalizations of the political economy of aid under the shadow of strategic interdependence, the model laid out here yields unique insights.^[@bermeo2018 and @buenoDeMesquitaSmith2016 are two good examples, but certainly are not the only ones.] 
+
+Analysis of the model underscores mechanisms that may drive strategic interdependence in international aid, revealing why donor governments may under or over commit resources in developing countries in pursuit of their foreign policy goals. For empiricists, the model calls for caution in drawing inferences about donor responses to each other, highlighting myriad ways identified spatial correlations may mask heterogeneous donor incentives while also being consistent with more than one kind of strategic response. Nonetheless, it does yield some generic predictions about how the comparative resource endowments of donor governments and the strategic valence of donor goals in developing countries push some donors to the top, and others to the bottom, in committing aid in recipients. 
+
+For those interested in institution design, the model also offers insight into the welfare implications of strategic interdependence. Time and again, leading countries gather for high level summits on international development cooperation only to see dismal progress made toward realizing the goals established in these meetings. One analyst noted that the reason for this enduring failure is the misalignment between the stated goals of cooperation and the wide-ranging strategic foreign policy interests of donor governments [@lawson2013]. Highlighting mechanisms that lie at the source of this misalignment, analysis of the model described here shows that an uncoordinated equilibrium among donor governments can often have an unintiutive location relative to a Pareto improving alternative under collective optimization---that is, an alternative way that donors could distribute aid that would make all better off relative to their self-interested mutual best-response. Even more, the existence of such an alternative is not guaranteed. Contrary to a more conventional view that donor collaboration is analogous to the classic Prisoners' Dilemma, in many instances,the adoption of a collectively optimal solution may be individually worse for at least one donor government relative to a Nash equilibrium. These results illustrate the kinds of stumbling blocks that may continue to impede donor collaboration.
+
+After introducing the model and analyzing its equilibrium and welfare properties, the paper concludes with three stylized facts that provide *prima facie* support for the model's characterization of aid allocation.
+
+
+## A Strategic Political Economy of Aid
+
+An enduring problem of international politics is that as one country strives to realize its foreign policy goals, this affects the extent to which other countries are able to realize their own sets of objectives. This fundamental issue is of central concern for the politics of foreign aid, since countries use aid as a means to realize wide-ranging goals vis-$\grave{\text{a}}$-vis one another. For this reason, the aid allocation decisions of leading countries are best viewed through the lens of a strategic political economy perspective.
+
+The proposed framework builds on conventional assumptions. Namely, that:
+
+\bigskip
+
+  1. the actors of consequence (donor states) are unitary, and
+  2. these actors are rational---meaning they have well-defined preferences and engage in activities with the goal of maximizing their own well-being.
+  
+\bigskip
+
+Strong though these assumptions may be, individual rationality provides animating force for the framework and makes general predictions about how actor priorities translate into specific choices possible. To these assumptions, the framework adds the following features:
+
+\bigskip
+
+  3. as actors take steps to maximize their well-being, they operate under a resource constraint, and
+  4. their activities reflect efforts to realize *multiple* objectives.
+
+\bigskip
+
+These have made innumerable conjoint appearances across disciplines and contexts. One instance that IR scholars might be familiar with is the $n$-good theory of foreign policy proposed by @morganPalmer2000. The authors contend that states' activities are best viewed in terms of policies that are directed toward multiple goals. As such, the primary decision facing country leaders is how to allot their limited resources in pursuit of their various objectives. 
+
+Of course, the constraints imposed by resource scarcity and the dynamics generated by variable preferences and technological capacity, while having interesting implications for the foreign policy choices made by state leaders, capture only a fraction of the factors that influence country decisions. Missing is a consideration of the fact that the actions countries take on the world stage generate various rival and mutually beneficial externalities for each other. 
+
+As an example, consider possible adjustments to US policy toward the Arab nations that recently normalized relations with Israel. Suppose US policymakers decided to expand sales of advanced weaponry, like F-35 fighter jets or unmanned combat aerial vehicles, to these countries given their diplomatic recognition of a critical strategic partner for the US. This action would not only have consequences for the US and this set of countries, it would also affect other major players in the region. For example, this action would pose a negative externality to China, which currently is a major supplier of cheaper, though inferior, UAVs and other military technology for this set of Gulf states.\footnote{For more on this example, see this opinion piece by Christian Le Miere in \textit{South China Morning Star}: https://www.scmp.com/comment/opinion/article/3104623/how-trumps-middle-east-deal-will-affect-chinas-arms-sales-region (accessed Oct. 26, 2020)} China would have an incentive to respond to US arms sales with more competitively priced technology, an action that, in turn, would affect the US, prompting a counter response---and on and on the cycle would go. 
+
+Externalities, of course, need not all be negative. Luxembourg, for instance, is a long-time supporter of multilateralism generally, and of European unity specifically.\footnote{See, for example, the "Luxembourg country brief" compiled by Australia's Department of Foreign Affairs and Trade (accessed May 6, 2021): https://www.dfat.gov.au/geo/luxembourg/Pages/luxembourg-country-brief.} To the extent that other nations engage in efforts in line with greater influence for multilateral institutions, or for a stronger European Union (EU) in particular, this contributes to a major foreign policy goal for Luxembourg. As a result, the harder other countries work to support the EU, the less effort Luxembourg has to expend to promote the same objective.
+
+Thus, when considering foreign policy activities, bilateral economic assistance included, accounting for strategic interdependence in the choices of countries is essential. How one country allots its resources in pursuit of different objectives has consequences for other countries as well, and vice versa. For foreign aid allocation in particular, how one country allots its own aid dollars has consequences for the goals and objectives of other aid donors. How other countries distribute aid in turn affects how hard an individual donor has to work to realize its own goals. Given this, a political economy of aid must allow that:
+
+\bigskip
+
+  5. as actors take steps to maximize their goals, their actions affect and are affected by other actors' efforts to realize their own objectives. Some actions yield *rival* benefits (what helps one state hurts another), and other actions yield *common* benefits (what helps one state helps another).
+
+\bigskip
+
+Theoretical consideration of the strategic dimensions to aid allocation is not entirely absent from the literature. But, what examples do exist either ignore the choices of donors with respect to individual recipients [@dudley1979], or suppose uniform externalities imposed by other-donor aid [@annenKnack2018; @annenMoers2017]. @steinwand2015, while allowing for possible differences in rival versus common benefits supplied by aid giving through alternative channels---aid given directly to recipient governments as opposed to non-governmental organizations---nonetheless treats aid given through a particular channel as having largely homogeneous consequences for other donors. Alternatively, the framework proposed here emphasizes both donor choices in allotting aid *between* recipients, and variable externalities posed by other-donor aid. 
+
+
+## A Model of Aid Allocation
+
+The moving parts of the strategic political economy approach laid out above are simple enough, but linking these to more concrete predictions for how countries realize their foreign policy goals through aid allocation is a fraught exercise. This is where the application of analytic tools like mathematical modeling can prove quite helpful. 
+
+To this end, I develop two-by-two model of aid allocation---two-donors, two-recipients. As countries allot resources to this or that aid recipient, it will be assumed that the level of aid they contribute supports a basket of objectives that are realized through their aid allocation. This basket, for simplicity's sake, is presumed constant between donors and over time. Further, one donor's basket is fully substitutable for the other donor's. 
+
+It will be assumed that as countries decide how to distribute aid, they will make their allocations in light of the foreign policy externality posed by other-country aid. On the whole, if more of the objectives realized by giving aid to a certain recipient are rival, then other-country aid will be a net hindrance to the realization of a given donor's goals. Conversely, if more of the objectives realized by giving aid to a certain recipient are on net common for the donor countries, then other-country aid will be a net help to the objectives of a given donor.
+
+Though the model itself is agnostic about the goals of donors and the conditions under which aid is more likely to promote rival or common objectives, some examples from the aid literature include the extent to which aid supports a donor's geostrategic goals, promotes greater bilateral trade, combats global terrorism, garners influence over former colonies, confers prestige, complements military deployments, and addresses the root causes of discontent and instability [@bearceTirone2010; @bermeo2017; @kilbyDreher2010; @kisanganiPickering2015; @roundOdedokun2004; and @vanDerVeen2011]. Donor interest in a recipient might be greater when a recipient is a major trading partner, or lower if a recipient has little geostrategic value. Donor goals might be common if they care more about addressing recipient poverty, or rival if they seek diplomatic influence. In Chapter 3 I tackle the question of when and where donor goals will be rival or common, but or now, it is more important to recognize that donors may have a mix of mutually beneficial or conflicting priorities that lead other-donor-aid to either be interpreted as a net supplement to, or cancellation of, the aid given by a single donor.
+
+The below section introduces the two-by-two model. Though a two-donor, two-recipient world is certainty far from realistic, it is simple enough to keep the analysis tractable, while being minimally sufficient for conferring lessons about strategic donor actions.\footnote{Though, of course, we might observe some interesting and novel behavior in a three-by-two model as well.}
+
+
+### The Two-by-Two Model
+
+Suppose we have two donor countries, $i$ and $j$, and two recipient countries, $x$ and $y$. Each of the donors is endowed with a certain relative share of resources available for allocating aid. Resources possessed by $i$ are denoted $R_i \in (0, 1)$, and resources possessed by $j$ are given as $R_j = 1 - R_i$. $R_i$ thus denotes the distribution of resources between $i$ and $j$. 
+
+As $i$ and $j$ distribute resources in the form of aid to $x$ and $y$, they each are able to realize certain baskets of foreign policy objectives through their allocations. $X \subseteq \mathbb{R}_+$ represents this basket of objectives with respect to recipient $x$, and $Y \subseteq \mathbb{R}_+$ represents this basket of objectives with respect to recipient $y$. Further, the quantity $X_i \in X$ denotes how much of $i$'s total foreign policy objectives are realized by giving aid to recipient $x$, while the quantity $Y_i \in Y$ denotes how much of $i$'s total foreign policy objectives are realized by giving aid to recipient $y$. Similar quantities exist for donor $j$.
+
+As $i$ and $j$ allot resources between $x$ and $y$, let the objectives donors are able to realize be linear functions of the amount of aid they contribute. For example, the basket of goals that $i$ is able to realize through its aid allocations to each recipient are given as
+$$X_i = x_i + \eta^x x_j \quad \text{and} \quad Y_i = y_i + \eta^y y_j,\tag{1}$$
+where $X$ poses no externality on $Y$, and vice versa. For each set of goals, the values $x_i$ and $y_i$ denote $i$'s contribution of aid, while $x_j$ and $y_j$ denote $j$'s. These quantities are strictly non-negative and bound such that $x_i + y_i \leqslant R_i$, and similarly for $j$. This means that $i$ and $j$ cannot spend more than their total endowment of resources in giving aid to both $x$ and $y$. 
+
+While the effect of $i$'s aid in support of its own goals is assumed to be constant, the effect of aid contributed by $j$ is conditional on the net externality that $j$'s aid poses to $i$'s overall objectives. The externality of $j$'s aid is represented by the terms $\eta^x, \eta^y \in (-1, 1)$. These reflect the extent to which the basket of foreign policy objectives donors realize through giving aid to each recipient are either on net rival or common. For example, if $-1 < \eta^x < 0$, then $j$'s foreign aid to $x$ overall subtracts from $i$'s ability to realize the sum of its goals in giving aid to this recipient. Conversely, if $0 < \eta^x < 1$, then $j$'s foreign aid overall helps $i$ to realize the sum of its goals in giving aid to $x$. In the case that $\eta^x = 0$, the net impact of $j$'s aid is zero.
+
+Assuming donors have well-behaved and monotonically increasing preferences over objectives they realize through giving aid to $x$ and $y$, utility for each can be represented by a function $u(\cdot)$ that is strictly increasing in quantities $X$ and $Y$, is at least twice differntiable, and is quasi-concave. To keep the math simple, a convenient choice that retains these generic properties is Cobb-Douglas. Specifically, utility for $i$ (and similarly for $j$) can be represented as
+$$u_i(X_i, Y_i) = \sigma_i^x\log(X_i) + \sigma_i^y\log(Y_i).\tag{2}$$
+In the above, $\sigma_i^x$ and $\sigma_i^y$ capture returns to scale for the sum of objectives $i$ is able to realize with respect to recipients $x$ and $y$. These are such that $\sigma_i^x \in (0,1)$ and $\sigma_i^y = 1 - \sigma_i^x$. These thus represent the relative salience $i$ attaches to realizing certain bundles of objectives with respect to recipient countries. As $\sigma_i^x \to 1$, $i$ places greater weight on realizing its goals by giving aid to $x$ than it does in giving aid to $y$.
+
+Assuming $i$ and $j$ are rational, self-interested actors, each will distribute aid between recipients in such a way that maximizes its own utility. Assuming an interior solution, this implies that for $i$, it will distribute its resources between $x$ and $y$ such that\footnote{Under a fixed resource constraint, $i$'s utility is maximized when $\partial u_i /\partial x_i = \partial u_i / \partial y_i$. $\partial u_i / \partial x_i = \sigma_i^x / (x_i + \eta^x x_j)$ and $\partial u_i / \partial y_i = \sigma_i^y / (y_i + \eta^y y_j)$}
+$$\frac{\sigma_i^x}{x_i + \eta^x x_j} = \frac{\sigma_i^y}{y_i + \eta^y y_j}.\tag{3}$$
+The left-hand side of the above equality denotes the marginal utility of aid to $x$ ($MU_i^x$), and the right-hand side denotes the marginal utility of aid to $y$ ($MU_i^y$). How $i$ allocates its aid in order to realize its ideal bundle of objectives over recipients will of course depend, not only on its prioritization of recipients, but also on the amount of aid contributed by $j$ between recipients and the externality $j$'s aid represents.
+
+
+### Friends, Adversaries, and Competitors
+
+Donor $i$'s incentives with respect to $j$'s aid can be summarized according to three general sets of strategic relationships between donors---call these *friends*, *adversaries*, and *competitors*. A summary is given in Table 1.1. 
+
+Suppose, first, that $i$ and $j$'s objectives in giving aid to both $x$ and $y$ are overall mutually beneficial in nature. Hence, $\eta^x, \eta^y > 0$, or, in words, $i$ and $j$ are *friends*. If $j$ were to make some positive transfer of resources $\Delta > 0$ from recipient $y$ to recipient $x$, the resulting change in $i$'s marginal utilities will be such that
+$$\frac{\partial MU_i^x}{\partial \Delta} < 0 \quad \text{and} \quad \frac{\partial MU_i^y}{\partial \Delta} > 0.\tag{4}$$
+In words, $j$'s hypothetical transfer of aid to $x$ from $y$ reduces the marginal utility of aid to $x$, and increases the marginal utility of aid to $y$. Donor $i$, in this scenario, has an incentive to give more aid where $j$ gives less. This response is called "strategic substitution." It might also be called strategic deference.\footnote{The term free-riding could also apply, though strategic substitution could also just reflect an incentive to specialize in the recipient donor $i$ cares most about.}
+
+
+
+
+\begin{table}[!t]
+\centering
+\caption{A Typology of Strategic Relationships}
+\vspace*{5mm}
+\begin{tabular}{ccccc}
+\hline 
+ \textit{Adversaries} && \textit{Competitors} && \textit{Friends} \\
+\hline
+ $\eta^x, \eta^y < 0$ && $\eta^x < 0 \land \eta^y > 0$ && $\eta^x, \eta^y > 0$ \\
+                      && $\eta^x > 0 \land \eta^y < 0$ && \\
+\hline
+\end{tabular}
+\end{table}
+
+Alternatively, suppose that donors $i$ and $j$ receive on net rival benefits from giving aid to both $x$ and $y$. That is, suppose that they are *adversaries*. Given a similar transfer $\Delta$ in the aid $j$ gives to $x$ from $y$, donor $i$'s marginal utilities will now be such that
+$$\frac{\partial MU_i^x}{\partial \Delta} > 0 \quad \text{and} \quad \frac{\partial MU_i^y}{\partial \Delta} < 0.\tag{5}$$
+In short, $j$'s transfer increases the marginal utility of aid to $x$, and decreases the marginal utility of aid to $y$. Given the hindrance $j$'s aid poses to $i$, $i$ has an incentive to give more aid where $j$ gives more. This response is called competition.^[Though technically positive or negative reactions are forms of "competition" in the sense that they reflect actions taken out of self-interest under conditions of strategic interdependence, I choose to refer to positive reactions specifically as competition for rhetorical reasons.]
+
+For the third scenario, $i$ and $j$ are rivals with respect to one recipient, but have common goals with respect to the other. In this case, they are *competitors*---a term that conveys a slightly less tense relationship than implied by *adversaries*, but not quite so copacetic as *friends*. Say, for instance, that $\eta^x > 0$ and $\eta^y < 0$. Some transfer $\Delta$ now is such that
+$$\frac{\partial MU_i^x}{\partial \Delta} < 0 \quad \text{and} \quad \frac{\partial MU_i^y}{\partial \Delta} < 0.\tag{6}$$
+That is, $j$'s transfer of aid from $y$ to $x$ both reduces the marginal utility of aid to $x$, and reduces the marginal utility of aid to $y$. Donor $j$'s aid overall contributes to the realization of $i$'s goals in giving aid to $x$, giving $i$ an incentive to reduce its own aid to $x$. However, at the same time, by $j$ transferring aid away from $y$ to $x$, $i$ also has an incentive to reduce the aid it gives to $y$. Donor $i$ no longer has to give as much aid to $y$ in order to realize the sum of its objectives in giving aid to that recipient, thus freeing resources that it can give to recipient $x$.
+
+What will donor $i$ ultimately choose to do? The answer to this question hinges on $i$'s priorities and the relative magnitude of the positive and negative externalities $j$'s aid poses between recipients. These parameters will determine whether the rate at which the transfer $\Delta$ reduces the marginal utility of aid to $x$ is greater than, equal to, or less than the transfer's effect on the marginal utility of aid to $y$. If, for example, 
+$$\frac{\partial^2 MU_i^x}{\partial \Delta^2} > \frac{\partial^2 MU_i^y}{\partial \Delta^2}\tag{7}$$
+then as a result of the transfer, $i$'s overall incentive will be to give more aid where $j$ gives more aid. That is, $i$ will seize the opportunity to compete less over rival gains with respect to recipient $y$ to realize more of its goals in giving aid to $x$. In short, it will respond with strategic complementarity. Conversely, if 
+$$\frac{\partial^2 MU_i^x}{\partial \Delta^2} < \frac{\partial^2 MU_i^y}{\partial \Delta^2}\tag{8}$$
+then $i$'s incentive will be to give less aid where $j$ gives more. In short, $i$ will take advantage of the greater aid $j$ gives to recipient $x$ to realize more of its rival objectives in giving aid to $y$. That is, it will respond with strategic substitution.
+
+In summary, the possible values of the externality parameters can be organized according to three types of strategic relationships between countries: (1) *friends*, (2) *adversaries*, and (3) *competitors*. The first and second categories denote contexts where $i$ and $j$ either receive net mutual benefits through their aid allocations across all recipients, or net rival benefits. The last category denotes the case where states have a mix of rival and common goals where rival goals are predominantly realized in giving aid to one recipient, and common goals are predominantly realized in giving aid to the other. Much of the analysis that follows---especially equilibrium analysis and comparative statics---will home in on the competitors case given the greater likelihood of donors being competitors "in the wild." However, to illustrate the breadth of incentives that may arise in the model, the next section gives equal attention to all three.
+
+
+### Deriving Best Responses
+
+The above reveals some important dynamics in donor incentives vis-$\grave{\text{a}}$-vis one another. However, it does not provide enough to yield specific predictions. To do this, it will be necessarily to explicitly derive actors' best-response functions.
+
+The first step is to specify each donor's utility maximization problem. For $i$ this is given as:
+$$\max_{x_i,y_i \in \mathbb{R}_+^2}u_i(x_i + \eta^x x_j, y_i + \eta^y y_j), \quad \text{subject to: } \quad x_i + y_i \leqslant R_i \text{ and } x_i, y_i \geqslant 0.\tag{9}$$
+From this, because we have an optimization problem subject to inequality constraints, we form the following Lagrangian:
+$$\mathcal{L}_i = u(x_i + \eta^x x_j,y_i + \eta^yy_j) + \lambda^R(R_i - x_i - y_i) + \lambda^x x_i + \lambda^y y_i,\tag{10}$$
+where the Karush-Kuhn-Tucker (KKT) necessary conditions for a vector of maximizers $(x_i^*,y_i^*)$ are
+$$
+\begin{aligned}
+& \frac{\partial \mathcal{L}_i}{\partial x_i} \geqslant 0 \quad x_i \geqslant 0 \quad \lambda^x \geqslant 0 \quad \lambda^xx_i = 0, \\
+& \frac{\partial \mathcal{L}_i}{\partial y_i} \geqslant 0 \quad y_i \geqslant 0 \quad \lambda^y \geqslant 0 \quad \lambda^yy_i = 0, \\
+& R_i - x_i - y_i \geqslant 0 \quad \lambda^R \geqslant 0 \quad \lambda^R(R_i - x_i - y_i) = 0.
+\end{aligned}\tag{11}
+$$
+These are the complementary slackness conditions. For objective bundle $X$, the above implies that either $\lambda^x = 0$ and $x_i > 0$, or $\lambda^x > 0$ and $x_i = 0$. This is similarly true for $\lambda^y$ and $y_i$, and $\lambda^R$ and $R_i - x_i - y_i$. Given that utility is monotonically increasing, we may assume $\lambda^R > 0$ and that $i$ expends all of its available resources in giving aid to $x$ and $y$. 
+
+From the above, we derive the following solution for a system of best response equations for $i$:
+$$
+\begin{aligned}
+x_i^* = \sigma_i^x\left(R_i + \eta^x x_j + \eta^y y_j \right) - \eta^x x_j, \\
+y_i^* = \sigma_i^y\left(R_i + \eta^x x_j + \eta^y y_j \right) - \eta^y y_j.
+\end{aligned}\tag{12}
+$$
+This solution holds assuming an interior solution, but it is certainly possible that states could specialize in one or the other aid recipient entirely. In such cases, it is necessary to be a little more explicit about the above equations. To ensure that corner solutions really stay bound at the corners, the best response functions will explicitly be such that $x_i^* = \min\{\max\{\sigma_i^x\left(R_i + \eta^x x_j + \eta^y y_j \right) - \eta^x x_j,0 \},R_i\}$. This form ensures that $0 \leqslant x_i^* \leqslant R_i$. However, using the implicit functional form is notationally convenient.
+
+We can further simplify the analysis by reducing best-responses to a single objective. This follows naturally from Walras's Law, which in this particular context implies that $\sum_i \left(x_i^* + y_i^* - R_i \right) = 0$. In words, because global resources will equal total demand, it is possible to represent $i$'s best response with respect to only a single recipient, since an equilibrium with respect to one necessarily implies an equilibrium with respect to the other. Simplifying for the best-response with respect to $X$ for example yields:
+$$x_i^* = \delta_0 + \delta_1 R_i + \delta_2 x_j,\tag{13}$$
+with the following identities for the intercept and slope parameters:
+$$\delta_0 := \sigma_i^x\eta^y, \quad \delta_1 := \sigma_i^x - \sigma_i^x \eta^y, \quad \delta_2 := \sigma_i^x (\eta^x - \eta^y)- \eta^x.\tag{14}$$
+By definition, this then implies that $i$'s optimal provision of aid to $y$ is simply
+$$y_i^* = R_i - x_i^* = (1 - \delta_1)R_i - \delta_0 - \delta_2x_j.\tag{15}$$
+By being able to express best-responses as a simple function of donors' activity with respect to a single recipient, this makes the identification of equilibrium aid allocations all the easier.
+
+Not surprisingly, we can see clearly from the above that $i$'s optimal provision of aid to $y$ is not only a function of $j$'s aid to $y$ but also $j$'s aid to $x$---by symmetry this is true also for $i$'s aid to $x$. This fact can lead to a range of interesting reaction paths. We will see more about how this works in the next section, treating *friends*, *adversaries*, and *competitors* seperately.
+
+
+### Some Informative Cases
+
+Before identifying equilibria and their welfare implications, it will be helpful to illustrate some examples of best responses, if only to provide further intuition about the incentives donors face in allotting foreign aid in service of their foreign policy goals. The below examples walk through the three general cases highlighted previously: *friends*, *adversaries*, and *competitors*.
+
+#### Case 1: Friends
+
+As a first case, consider a world where states' strategic relationship is that of *friends*. That is, donors $i$ and $j$ pursue mutually beneficial sets of objectives in giving aid to $x$ and $y$: $\eta^x, \eta^y > 0$. In this case, each donor's best response to the aid allocated by the other will be strategic substitution---to give less aid where the other gives more. For donor $i$, this implies that for its best-response equation,
+$$x_i^* = \delta_0 + \delta_1 R_i + \delta_2 x_j,\tag{16}$$
+the parameter $\delta_2 < 0$. 
+
+Figure 1.1 shows some possible reaction paths. The left panel shows $i$'s aid allocations to $x$, and the right panel shows $i$'s aid allocations to $y$. Red denotes an instance where $i$ gives more weight to its foreign policy goals with respect to recipient $y$ ($\sigma_i^x = 1/4$). The blue line denotes an alternative example where $i$ gives more weight to its goals with respect to $x$ ($\sigma_i^x = 3/4$). In both cases the externality parameters are such that $\eta^x = 3/4$ and $\eta^y = 1/2$. 
+
+Recall from the identity of $\delta_2$ that its magnitude and direction will be a function of $i$'s preference for recipient $x$, and the externalities of $j$'s aid to both $x$ and to $y$. In each set of examples, country $i$'s best-response is substitution; though in the former case, $i$ gives less aid overall to $x$ and will defer all responsibility for giving aid to $x$ if $j$'s allocation is sufficiently large. However, in the latter case, where $i$ cares more about $x$ than $y$, the slope of the reaction is slightly attenuated. Also, due to the higher weight $i$ attaches to giving aid to $x$, $i$'s incentives are such that, if $j$ gives sufficiently little aid to $x$, it will entirely defer responsibility for giving aid to $y$ onto $j$ and will give aid exclusively to $x$.
+
+
+```{r, fig.height=3.75,fig.width=8, fig.cap="Case 1 reaction paths for donor $i$ in response to $j$'s aid allocations."}
+source(here("03_sourcecode/nash_analysis.R"))
+library(ggplot2)
+library(dplyr)
+rbind(
+  xi(Ri=1/2,sigix=1/4,etax=3/4,etay=1/2) %>%
+    mutate(sigma = '1/4'),
+  xi(Ri=1/2,sigix=3/4,eta=3/4,etay=1/2) %>%
+    mutate(sigma = '3/4')
+)%>%
+  ggplot() +
+  aes(
+    aidj, aidi, color = sigma
+  ) +
+  facet_wrap(~recipient) +
+  geom_line(size = 1) +
+  labs(
+    x = "Aid from Donor j",
+    y = "Donor i's Best Response",
+    color = expression(sigma[i]^x),
+    caption = expression(list(eta^x==3/4,eta^y==1/2))
+  ) +
+  scale_x_continuous(
+    breaks = c(0,0.5),
+    labels = c(0,expression(R[j]))
+  ) +
+  scale_y_continuous(
+    breaks = c(0,0.5),
+    labels = c(0,
+               expression(R[i])),
+    limits = c(0,0.5)
+  ) +
+  ggridges::theme_ridges(
+    center_axis_labels = T
+  ) +
+  theme(
+    legend.position = c(.85,.25)
+  )
+```
+
+
+The emergence of corner solutions is also a function of $R_i$. If $i$'s share of resources is much less than $j$'s, it is far more likely that $i$ has a corner solution for one of the recipients. The greater $R_j$ relative to $R_i$, the farther right along the x-axis $j$'s potential contribution of aid may go---and thus, the more likely $i$'s best response path meets with zero. The real-world prevalence of corner solutions among smaller aid donors illustrates the implications of this quite well. Given their more limited resources, to the extent that donors have common objectives with respect to at least some recipients, smaller donors like Iceland, the Netherlands, and Greece should have a greater number of corner solutions than larger donors like the US, Japan, and the UK. This much is evident from Figure 1.2.\footnote{ODA data comes from \textit{OECD.stat}.} Along the x-axis the ranked total ODA expenditures of donors in 2014 across 24 key development sectors are shown. Along the y-axis the number of recipients that received zero dollars in aid across these 24 sectors from a given donor are shown. A clear relationship between total aid expenditures and the prevalence of corner solutions emerges. The top 5 donors for 2014 are Japan, the US, Germany, France, and the UK. The number of recipients in the data that receive zero aid across the 24 development sectors from each donor is 1, 6, 5, 2, and 14 respectively. Meanwhile, the bottom 5 donors---Hungary, Slovenia, Slovakia, Iceland, and Greece---have 115, 105, 70, 101, and 42 recipients that receive zero aid across these same sectors.
+
+```{r, fig.height=3, fig.width=4, fig.cap="Smaller donors have a greater number of corner solutions. Example with ODA data from 2014."}
+dt <- read_csv(here('04_data/final_data.csv')) 
+dt %>% 
+  mutate(donor = countrycode::countrycode(donor, "country.name", "iso3c")) %>%
+  filter(year == 2014) %>%
+  group_by(donor) %>%
+  summarize(
+    total_aid = sum(aid),
+    corner_solutions = sum(aid == 0)
+  ) %>%
+  ungroup() %>%
+  mutate(
+    total_aid = rank(total_aid)
+  ) %>%
+  arrange(total_aid) %>%
+  ggplot() +
+  aes(total_aid, corner_solutions, label = donor) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F) +
+  ggrepel::geom_label_repel(
+    size = 2
+  ) +
+  ##scale_x_log10(
+  ##  labels = scales::comma
+  ##) +
+  labs(
+    x = "Ranked total of ODA commitments for 2014",
+    y = "Recipients that receive zero ODA"
+  ) +
+  ggridges::theme_ridges(
+    font_size = 10
+  )
+```
+
+
+#### Case 2: Adversaries
+
+Consider an alternative case where $i$ and $j$ are *adversaries*. That is, $\eta^x, \eta^y < 0$. In this case, whatever the arrangement of $i$'s preferences, its best response to $j$ will always be strategic complementarity: e.g., $\delta_2 > 0$. 
+
+```{r, fig.height=3.75,fig.width=8, fig.cap="Case 2 reaction paths for donor $i$ in response to $j$'s aid allocations."}
+rbind(
+  xi(Ri=1/2,sigix=1/4,etax=-3/4,etay=-1/2) %>%
+    mutate(sigma = '1/4'),
+  xi(Ri=1/2,sigix=3/4,eta=-3/4,etay=-1/2) %>%
+    mutate(sigma = '3/4')
+)%>%
+  ggplot() +
+  aes(
+    aidj, aidi, color = sigma
+  ) +
+  facet_wrap(~recipient) +
+  geom_line(size = 1) +
+  labs(
+    x = "Aid from Donor j",
+    y = "Donor i's Best Response",
+    color = expression(sigma[i]^x),
+    caption = expression(list(eta^x==-3/4,eta^y==-1/2))
+  ) +
+  scale_x_continuous(
+    breaks = c(0,0.5),
+    labels = c(0,expression(R[j]))
+  ) +
+  scale_y_continuous(
+    breaks = c(0,0.5),
+    labels = c(0,
+               expression(R[i])),
+    limits = c(0,0.5)
+  ) +
+  ggridges::theme_ridges(
+    center_axis_labels = T
+  ) +
+  theme(
+    legend.position = c(.85,.25)
+  )
+```
+
+Figure 1.3 shows a set of examples similar to those given in Figure 1.1. The main difference, of course, is that the externalities posed by $j$'s aid are now negative: $\eta^x = -3/4$ and $\eta^y = -1/2$. The red slope shows $i$'s best response if it cared more about recipient $y$ than $x$ ($\sigma_i^x = 1/4$), and the blue slope shows $i$'s best response if it cared more about recipient $x$ than $y$ ($\sigma_i^x = 3/4$). $i$'s response is slightly attenuated in the second case, while its level of aid allocation to $x$ ($y$) is overall greater (lower).
+
+An appropriate analogue for this scenario is an arms race. As @glaser2000 states regarding arms races, the prevailing view sees arms buildups as the product of a cycle of "action" and "reaction" where states expand their armaments in an effort to shore up their own security in the face of an adversary. In a similar way, aid donors that are adversaries respond to each other by targeting greater and greater shares of their aid where their opponent targets more of theirs in order to maintain their foreign policy interests.
+
+
+#### Case 3: Competitors
+
+Now, consider the third scenario where $i$ and $j$ are *competitors*. Suppose that while $i$ and $j$ pursue on net rival objectives in giving aid to $x$, they have predominantly common objectives in giving aid to $y$. In this particular case, the sign of $i$'s reaction to $j$ may be either positive or negative. Which emerges will hinge on variation in the externality parameters and the weight $i$ attaches to its goals in giving aid to recipients.
+
+```{r, fig.height=3.75,fig.width=8, fig.cap="Case 3 reaction paths for donor $i$ in response to $j$'s aid allocations."}
+rbind(
+  xi(Ri=1/2,sigix=1/4,etax=-3/4,etay=1/2) %>%
+    mutate(sigma = '1/4'),
+  xi(Ri=1/2,sigix=2/3,eta=-3/4,etay=1/2) %>%
+    mutate(sigma = '2/3')
+)%>%
+  ggplot() +
+  aes(
+    aidj, aidi, color = sigma
+  ) +
+  facet_wrap(~recipient) +
+  geom_line(size = 1) +
+  labs(
+    x = "Aid from Donor j",
+    y = "Donor i's Best Response",
+    color = expression(sigma[i]^x),
+    caption = expression(list(eta^x==-3/4,eta^y==1/2))
+  ) +
+  scale_x_continuous(
+    breaks = c(0,0.5),
+    labels = c(0,expression(R[j]))
+  ) +
+  scale_y_continuous(
+    breaks = c(0,0.5),
+    labels = c(0,
+               expression(R[i])),
+    limits = c(0,0.5)
+  ) +
+  ggridges::theme_ridges(
+    center_axis_labels = T
+  ) +
+  theme(
+    legend.position = c(.85,.25)
+  )
+```
+
+Figure 1.4 illustrates this point. The red line denotes a case where $i$ cares more about its goals in giving aid to $y$ than to $x$ ($\sigma_i^x = 1/4$). In this instance, $i$'s best strategic response to $j$'s aid allocation is strategic complementarity. Alternatively, in the case where $i$ cares more about $x$ than $y$, the blue line, $i$'s best response is strategic substitution. What accounts for this difference?
+
+As it turns out, $i$'s priorities over recipients plays a key role in conditioning its response to $j$. In the first example, $i$ cares relatively little about recipient $x$, which means the competitive threat posed by $j$ giving aid to $x$ dominates its response. This can be seen by considering the identity of $\delta_2$:
+$$\delta_2 = \sigma_i^x(\eta^x - \eta^y) - \eta^x.\tag{17}$$
+As $\sigma_i^x$ approaches zero, the sign and magnitude of $\eta^x$ increasingly determines how $i$ responds to $j$'s aid to $x$. In fact, it is the case that
+$$
+\sigma_i^x \to 0 \quad \implies \quad   \sigma_i^x(\eta^x - \eta^y) - \eta^x \to -\eta^x.\tag{18}
+$$ 
+In words, absent substantial intrinsic interest in realizing certain goals by giving aid to a recipient country, the externality created by other-donor aid becomes the primary factor determining aid allocation. In this instance, as $i$ places greater priority on its goals in $x$, the importance it places on realizing its goals in $y$ is necessarily lower. This means that the *positive* externality of $j$'s aid in $y$ now plays a more outsized role in shaping $i$'s best response in distributing aid between recipients.
+
+A well-known real-world case of such a strategic dynamic can be seen in how Western countries dramatically cut aid to various authoritarian regimes after the collapse of the Soviet Union [@brautigamKnack2004]. With the negative externality posed by Soviet aid gone, Western donors had little remaining incentive to continue to give aid to recipients that had little intrinsic value absent a geostrategic rival.
+
+A similar logic explains why there is a shift in $i$'s strategic response from complementarity to substitution given a sufficient shift in the salience it attaches to recipients. This is seen by observing what happens to the slope of $i$'s reaction in the limit where $\sigma_i^x$ approaches one: 
+$$\sigma_i^x \to 1 \quad \implies \quad  \sigma_i^x(\eta^x - \eta^y) - \eta^x \to -\eta^y.\tag{19}$$ 
+In words, the more $i$ cares about recipient $x$, the more the externality created by $j$'s aid to $y$ shapes its strategic response. In the example shown in Figure 1.4, $i$'s interest in recipient $x$ is great enough (and hence its interest in $y$ low enough) that its strategic behavior is most determined by the positive impact of $j$'s aid to $y$. In short, this means that the more aid $j$ gives to $y$, the more $i$ takes advantage of $j$'s giving to direct its resources toward realizing its goals in giving aid to $x$.
+
+
+### A Summary of Cases
+
+The above cases reveal how variation in externalities and country priorities over foreign policy objectives can lead to a variety of best responses. It would be impossible to describe every possible scenario; however, it is possible to describe the range of best responses given arrangements of externality parameters and preferences. Figure 1.5 offers such a summary.
+
+```{r,fig.height=4,fig.width=8,fig.cap="Possible directions of reaction paths."}
+library(foreach)
+etay <- etax <- seq(-1, 1, len = 50)
+reactions <- foreach(
+  i = 1:length(etax)
+) %do% {
+  foreach(
+    j = 1:length(etay)
+  ) %do% {
+    react_paths(
+      sigix = 1/4,
+      sigjx = 3/4,
+      etax = etax[i],
+      etay = etay[j]
+    ) %>% 
+      mutate(etax = etax[i],
+             etay = etay[j])
+  } %>% bind_rows()
+} %>% bind_rows()
+
+
+reactions <- reactions %>%
+  mutate(
+    Donor = rep(c(1/4,3/4), len = nrow(reactions))
+  )
+ggplot(reactions) +
+  aes(
+    etax,
+    etay,
+    fill = Reaction
+  ) +
+  facet_grid(~ Donor,
+             labeller = label_bquote(cols = sigma[i]^x==.(Donor))) +
+  geom_tile() +
+  scale_fill_gradient2(
+    low = "red",
+    high = "blue",
+    mid = "white"
+  ) +
+  scale_x_continuous(
+    breaks = c(-1, 0, 1),
+    labels = c(-1, 0, 1)
+  ) +
+  scale_y_continuous(
+    breaks = c(-1, 0, 1),
+    labels = c(-1, 0, 1)
+  ) +
+  labs(
+    x = expression(eta^x),
+    y = expression(eta^y)
+  ) +
+  geom_abline(
+    aes(intercept = 0,
+    slope = -((3/4) / (1/4))),
+    data = subset(reactions, Donor == 1/4),
+    size = 1
+  ) +
+  geom_abline(
+    aes(intercept = 0,
+    slope = -((1/4) / (3/4))),
+    data = subset(reactions, Donor == 3/4),
+    size = 1
+  ) +
+  geom_vline(
+    xintercept = 0, lty = 2
+  ) +
+  geom_hline(
+    yintercept = 0, lty = 2
+  ) +
+  annotate(
+    "text",
+    x = 0.35,
+    y = -0.4,
+    label = "-frac(sigma[i]^y, sigma[i]^x)",
+    parse = TRUE
+  ) +
+  annotate(
+    "text",
+    x = -.5,
+    y = -.5,
+    label = "(+) Reaction"
+  ) +
+  annotate(
+    "text",
+    x = .5,
+    y = .5,
+    label = "(-) Reaction"
+  ) +
+  ggridges::theme_ridges() +
+  theme(
+    axis.title.y = element_text(
+      angle = 360, vjust = 1
+    ),
+    legend.position = "none",
+    strip.text = element_text(vjust = 1)
+  ) 
+```
+
+The left panel shows the range of best responses $i$ might have to $j$'s aid over the range of possible values of the externality parameters. For this particular example, $i$'s preferences between recipients are held constant at $\sigma_i^x = 1/4$. The right panel shows the range of best responses $i$ might have to $j$'s aid over the same range of possible values of the externality parameters. In this case, $i$'s preferences between recipients are held constant at $\sigma_i^x = 3/4$. The blue areas denote instances where a $i$'s best response is strategic complementarity, or a positive reaction to where the other donor gives aid. The red areas denote instances where $i$'s best response is strategic substitution, or a negative reaction to where the other donor gives aid. The relative lightness of the colors captures the magnitude of the strategic response---as the shade darkens, the response becomes more severe, while as the shade lightens, the response approaches zero. 
+
+Consistent with the three preceding cases, this summary aligns with the three-part typology of strategic relationships between countries $i$ and $j$ suggested earlier---e.g., that countries' strategic relationship may be that of *friends*, *adversaries*, or *competitors*. Recall that in cases where actors are *friends*, both actors mutually benefit from giving aid to $x$ and $y$. They consequently have negatively sloped reaction paths, regardless of their preferences, for all possible values of $\eta^x, \eta^y > 0$. Meanwhile, in cases where $i$ and $j$ are *adversaries*, both actors are rivals with respect to $x$ and $y$. Here, they have positively sloped reaction paths, no matter their preferences, for all $\eta^x,\eta^y < 0$. In both cases, the absolute magnitude of the best-responses will vary depending on the precise parameter values, but the general direction of the responses will not.
+
+However, in cases where $i$ and $j$ are *competitors*---that is, when donors reap mutual benefits with respect to one recipient, and rival benefits with respect to the other---reaction paths may be either positive or negative. And, they need not be in the same direction for both donors. The key factor determining which is the case is the relative weight donors place on realizing their foreign policy goals by giving aid to either $x$ or $y$. As it so happens, the slope of the boundary between negative and positive reactions is equivalent to:
+$$-\frac{\sigma_i^y}{\sigma_i^x} \equiv \frac{\sigma_i^x - 1}{\sigma_i^x}.\tag{20}$$
+The slope of this line for donor $i$ is shown in black. As $\sigma_i^x \to 1$, the slope approaches zero, while as $\sigma_i^x \to 0$ the slope approaches $-\infty$. 
+
+
+## Analysis
+
+With the best-responses for actors $i$ and $j$ defined, it is now possible to consider equilibrium distributions of aid, comparative statics, and welfare analysis. Up to now, description of the model has included the breadth of strategic relationships between donor governments. However, in the real-world, certain strategic relationships are more probable than others. Specifically, while the model allows for donors to be pure *friends* or *adversaries*, in terms of the parameter space donors are more likely to be *competitors*---having a mix of rival and common interests. Such a strategic dynamic is also most realistic for large donor governments. Industrialized countries distribute aid across more than a hundred recipients. While donor interests with respect to some of these recipients may be rival, there may be several instances where donor interests are common. To narrow the focus to cases that may be most relevant for thinking about the strategic incentives of prominent donors, I will restrict the analysis to cases where $\eta_x < 0$ and $\eta_y > 0$.
+
+To support this exercise, of course, it will be necessary to first know with certainty that the equilibria to be analyzed exist, are unique, and are well-behaved. If equilibrium solutions do not exist, then it would make little sense to engage in equilibrium analysis. And, if said equilibria were not unique, then this would add a great deal of complexity to the analysis and make identifying equilibrium solutions numerically unfeasible. Further, if said equilibria were not stable, or smooth with respect to the model parameters, comparative statics would prove a dangerous exercise indeed.
+
+Thankfully, it can be shown that
+
+\bigskip
+> **Proposition 1** \textit{There always exists a} \textbf{unique} \textit{Nash equilibrium vector of best responses} $(x_i^*, x_j^*)$.
+
+\bigskip
+
+> *See Appendix for proof.* \qed
+
+\bigskip
+
+Further, it can be shown that
+
+\bigskip
+
+> **Proposition 2** \textit{The Nash equilibria are smooth with respect to model parameters.}
+
+
+\bigskip
+
+> *See Appendix for proof.* \qed
+
+\bigskip
+
+However, with respect to the first proposition, there are some interesting pathologies that emerge at the bounds of the externality parameters: e.g., as $|\eta^x|, |\eta^y| \to 1$. Specifically, at the bounds, *unique* equilibrium solutions do not necessarily exist. Rather, countries $i$ and $j$ may face a coordination problem with respect to an infinite set of pure-strategy Nash equilibria.\footnote{There are mixed-strategies as well.} Fortunately, given that $\eta^x,\eta^y \in (-1,1)$ (that is, the externality parameters do not include their boundaries at $-1$ and 1), such pathological cases do not arise in practice.\footnote{This is a nakedly utilitarian reason for specifying the externality parameters as such.}
+
+
+### Derivation of Nash Equilibria 
+
+Knowing the above, it is possible to derive the unique Nash equilibrium. For country $i$, this solution with respect to recipient $x$ is given as:
+$$
+\begin{aligned}
+x_i^* & = \delta_{i0} + \delta_{i1} R_i + \delta_{i2} x_j^*, \\
+x_i^* & = \delta_{i0} + \delta_{i1} R_i + \delta_{i2} (\delta_{j0} + \delta_{j1} R_j + \delta_{j2} x_i^*), \\
+x_i^* - \delta_{i2} \delta_{j2} x_i^* & = \delta_{i0} + \delta_{i1} R_i + \delta_{i2} ( \delta_{j0} + \delta_{j1} R_j), \\
+x_i^* & = \frac{\delta_{i0} + \delta_{i1} R_i + \delta_{i2} \delta_{j0} + \delta_{i2}\delta_{j1} R_j}{1 - \delta_{i2}\delta_{j2}}.
+\end{aligned} \tag{21}
+$$
+By symmetry, $j$'s equilibrium allocation to $x$ is
+$$x_j^* = \frac{\delta_{j0} + \delta_{j1} R_j + \delta_{j2} \delta_{i0} + \delta_{j2} \delta_{i1} R_i}{1 - \delta_{i2}\delta_{j2}}. \tag{22}$$
+If we replace the $\delta$ parameters with their identities, the solution expands to:
+$$
+\begin{aligned}
+x_i^* & = \{\sigma_i^x\eta^y + (\sigma_i^x - \sigma_i^x \eta^y) R_i + \\ 
+& \quad \quad [\sigma_i^x (\eta^x - \eta^y)- \eta^x] \sigma_j^x\eta^y + \\ 
+& \quad \quad [\sigma_i^x (\eta^x - \eta^y)- \eta^x] (\sigma_j^x - \sigma_j^x \eta^y) R_j\} / \\
+& \quad \quad \quad \{1 - [\sigma_i^x (\eta^x - \eta^y)- \eta^x] [\sigma_j^x (\eta^x - \eta^y)- \eta^x]\}
+\end{aligned} \tag{23}
+$$
+From Walras' Law, an equilibrium with respect to $x$ implies an equilibrium solution for $y$. Hence, whatever solution we have for $x$, the equilibrium aid allocations to $y$ for $i$ and $j$ are simply:
+$$y_i^* = R_i - x_i^* \quad \text{and} \quad y_j^* = R_j - x_j^*.\tag{24}$$
+
+It should be repeated that while these functional forms are continuous with respect to the model parameters, the explicit functional form for these solutions is restricted to the bounds $0 \leq x_i^* \leq R_i$.
+
+### Comparative Statics
+
+Variation in model parameters reveals a considerable diversity of possible equilibrium outcomes. In this section, many such possibilities are considered using motivating examples. The goal is not only to demonstrate how predictions shift with model parameters, but also to show that the model yields predictions that it *ought* to make.
+
+Consider, first, an example motivated by a real-world event: the collapse of the Soviet Union as a sizable threat to US foreign policy interests. During the Cold War years, the US gave disproportionately more aid to developing countries bordering communist nations. However, after the Cold War, having a communist neighbor ceased to be a significant predictor of US aid [@meernikEtAl1998]. This change implies recipients with a communist neighbor were not intrinsically valuable to the US, but were important targets of aid nonetheless due to possible competition from the USSR. With competition no longer active, and little intrinsic value placed on these countries otherwise, they saw a reduction in US aid.
+
+This is precisely what the model predicts would happen, as shown in Figure 1.6. For this example, the $\sigma$ and $\eta$ parameters are held constant at $\sigma_i^x = 1/10$, $\sigma_j^x = 9/10$, $\eta^x = -1/2$, and $\eta^y = 1/10$ respectively. That is, $i$ and $j$ are rivals with respect to recipient $x$ while they obtain common benefits from giving aid to $y$. In this example, the negative externality posed by aid to $x$ is more substantial than is the positive externality of aid to $y$. Further, $j$ cares much more about recipient $x$ than $y$, while $i$ cares much more about $y$ than it does $x$. From the left to the right of the x-axis, $i$'s share of resources shifts between 0 and 1. 
+
+
+```{r, fig.height=3, fig.width=4, fig.cap="The implications of a diminished foreign aid donor. Donor $i$ is in \\textcolor{blue}{blue}, and donor $j$ is in \\textcolor{red}{red}. Dashed lines show donors' share of resources. If aid expenditures overlap with these budget lines, donors have a corner solution."}
+##plot a course
+ne_course <- function(
+  params
+) {
+  params$xi <- params$xj <- 0
+  for(i in 1:nrow(params)) {
+     xx <- 
+      with(
+        params[i, ],
+        nash_eq(Ri, sigix, sigjx, etax, etay)
+      )[, 2] 
+     params$xi[i] <- xx[1,]$x
+     params$xj[i] <- xx[2,]$x
+  }
+  return(params)
+}
+params <- data.frame(Ri    = seq(0.01, 0.99, len = 1000),
+                     sigix = 1/10, #seq(0.1, 0.5, len = 1000),
+                     sigjx = 9/10, #seq(0.9, 0.5, len = 1000),
+                     etax  = -5/10,#seq(-0.1, -0.9, len = 1000),
+                     etay  = 1/10,
+                     it    = 1:1000)
+predictions <- ne_course(params) %>%
+  mutate(xj_share = xj / (1 - Ri),
+         xi_share = xi / Ri)
+ggplot(predictions) +
+  geom_line(
+    aes(it, xi),
+    color = "blue",
+    size = 1
+  ) +
+  geom_line(
+    aes(it, Ri),
+    color = "blue",
+    lty = 2
+  ) +
+  geom_line(
+    aes(it, xj),
+    color = "red",
+    size = 1
+  ) +
+  geom_line(
+    aes(it, 1 - Ri),
+    color = "red",
+    lty = 2
+  ) +
+  scale_x_continuous(
+    breaks = NULL 
+  ) +
+  labs(
+    x = expression(R[i]*": "*0 %->% 1),
+    y = "Aid to recipient x"
+  ) +
+  annotate(
+    "text",
+    x = c(0.12, 0.89)*max(predictions$it),
+    y = 0.95,
+    label = c("1 - R[i]", "R[i]"),
+    color = c("red", "blue"),
+    parse = TRUE
+  ) +
+  theme_classic() 
+```
+
+The increase in $i$'s relative resource endowment results in a shift in equilibrium aid allocations consistent with what occurred with the collapse of the Soviet Union. As $i$'s resources compared to $j$'s increase, $i$'s contribution of aid to recipient $x$ declines. This is due to the diminished threat to $i$'s interests with respect to $x$ posed by $j$. 
+
+The model yields other predictions that are consistent with well-documented patterns in donor giving. In a previous section, it was noted that governments of smaller donors were more likely to have corner solutions---to give zero aid to at least one recipient. Indeed, the empirical record is consistent with this view. Among *competitors*, corner solutions are likely to emerge as the smaller of the two donors is forced to sacrifice support for common interests in one recipient in order to compete over rival objectives with respect to the other. Holding the parameters at $\sigma_i = 1/10$, $\sigma_j = 9/10$, $\eta^x = -1/2$, and $\eta^y = 1/2$, Figure 1.7 shows how donors' aid  to recipient $x$ change as $R_i$ shifts from between 0 and 1. As the balance of resources shifts from $j$'s to $i$'s favor, $i$ ceases to have a corner solution (to give its entire aid budget to $x$ to compete for rival gains), while $j$ shifts toward having a corner solution. 
+
+```{r, fig.height=3, fig.width=4, fig.cap="Smaller donors and corner solutions. Donor $i$ is in \\textcolor{blue}{blue}, and donor $j$ is in \\textcolor{red}{red}. Dashed lines show donors' share of resources. If aid expenditures overlap with these budget lines, donors have a corner solution."}
+##plot a course
+params <- data.frame(Ri    = seq(0.01, 0.99, len = 1000),
+                     sigix = 1/10, #seq(0.1, 0.5, len = 1000),
+                     sigjx = 9/10, #seq(0.9, 0.5, len = 1000),
+                     etax  = -5/10,#seq(-0.1, -0.9, len = 1000),
+                     etay  = 5/10,
+                     it    = 1:1000)
+predictions <- ne_course(params)
+ggplot(predictions) +
+  geom_line(
+    aes(it, xi),
+    color = "blue",
+    size = 1
+  ) +
+  geom_line(
+    aes(it, Ri),
+    color = "blue",
+    lty = 2
+  ) +
+  geom_line(
+    aes(it, xj),
+    color = "red",
+    size = 1
+  ) +
+  geom_line(
+    aes(it, 1 - Ri),
+    color = "red",
+    lty = 2
+  ) +
+  scale_x_continuous(
+    breaks = NULL 
+  ) +
+  labs(
+    x = expression(R[i]*": "*0 %->% 1),
+    y = "Aid to recipient x"
+  ) +
+  annotate(
+    "text",
+    x = c(0.12, 0.89)*max(predictions$it),
+    y = 0.95,
+    label = c("1 - R[i]", "R[i]"),
+    color = c("red", "blue"),
+    parse = TRUE
+  ) +
+  theme_classic() 
+```
+
+The model also offers lessons for relatively new developments in aid politics. Consider the rise of China as an important aid donor. A worry among many policymakers is that differences in China's priorities relative to those of Western donors poses a threat to the interests of countries like the United States and Japan. A normative concern among researchers is that rivalry with China will alter the way traditional donors target their aid with negative consequences for aid recipients. Several studies have already shown how China's aid practices not only influence where DAC countries target their aid, but also the types of projects they are likely to support [@zeitz2021].
+
+```{r, fig.height=3, fig.width=4, fig.cap="The 'rise' of China. Donor $i$ is in \\textcolor{blue}{blue}, and donor $j$ is in \\textcolor{red}{red}. Black denotes the sum total of aid to $y$. Dashed lines show donors' share of resources. If aid expenditures overlap with these budget lines, donors have a corner solution."}
+##plot a course
+params <- data.frame(Ri    = seq(0.99, 0.01, len = 1000),
+                     sigix = 1/10, #seq(0.1, 0.5, len = 1000),
+                     sigjx = 5/10, #seq(0.1, 0.9, len = 1000),
+                     etax  = seq(-0.1, -0.9, len = 1000),
+                     etay  = 1/10,
+                     it    = 1:1000)
+predictions <- ne_course(params) 
+ggplot(predictions) +
+  geom_line(
+    aes(it, Ri - xi),
+    color = "blue",
+    size = 1
+  ) +
+  geom_line(
+    aes(it, Ri),
+    color = "blue",
+    lty = 2
+  ) +
+  geom_line(
+    aes(it, 1 - Ri - xj),
+    color = "red",
+    size = 1
+  ) +
+  geom_line(
+    aes(it, 1 - Ri),
+    color = "red",
+    lty = 2
+  ) +
+  geom_line(
+    aes(it, (Ri - xi) + (1 - Ri - xj))
+  ) +
+  scale_x_continuous(
+    breaks = NULL 
+  ) +
+  labs(
+    x = expression(R[i]*": "*1 %->% 0 *" & "*
+                     eta^x*": "*-0.1 %->% -0.9),
+    y = "Aid to recipient y"
+  ) +
+  annotate(
+    "text",
+    x = c(0.11, 0.87)*max(predictions$it),
+    y = 0.95,
+    label = c("R[i]", "1 - R[i]"),
+    color = c("blue", "red"),
+    parse = TRUE
+  ) +
+  theme_classic() 
+```
+
+Such negative consequences are consistent with the model. The rise of a donor that increasingly values promoting its geostrategic and selfish economic interests in targeting aid has unfortunate implications for the global distribution of aid. Consider the example shown in Figure 1.8, which depicts aid from donors $i$ and $j$ to recipient $y$---where donors' aid has mutually beneficial effects for both donors. In this instance, as the government of $j$ enjoys an increase in its share of resources, the negative externality of its aid to $x$ worsens. For this particular numerical example, $R_i$ shifts from between 1 to 0 (moving in $j$'s favor), while $\eta^x$ shifts from $-0.1$ to $-0.9$ (meaning rivalry in $x$ worsens). 
+
+The equilibrium behavior of both donor governments is consistent with many analysts' and policymakers' worst fears. Aid to recipient $y$, which is a site of mutual interests between $i$ and $j$, receives not only less support from $i$ as the balance of resources moves toward $j$'s favor, it also receives less total aid over all, denoted by the solid black line. As it so happens, in this example $\sigma_i^x = 1/10$, meaning that the government of $i$ cares much less about $x$ than it does $y$. Nonetheless, competitive pressure leads $i$ to eventually forego giving aid to $y$ altogether in an effort to compete with $j$.
+
+In sum, the model is consistent with several observed empirical regularities while also micro-founding these patterns in mechanisms rooted in strategic interdependence. It is consistent with a decline in aid to several developing countries following the collapse of the Soviet Union, locating the reason for this decline not in a reduction of the intrinsic value of these countries to the US and its allies, but rather in the lack of intrinsic value that they had to begin with. Further, the model is consistent with a preponderance of corner solutions among smaller donors, even when donors are *competitors*. Because smaller donors are at the greatest disadvantage in competing against larger donors when and where rivalry exists, they are forced to sacrifice support for common interests in one recipient in order to compete over rival objectives with respect to the other. And, finally, the model suggests problematic consequences due to the rise of China as a prominent donor. To the extent that Beijing's global development assistance serves geostrategic and selfish economic interests, this will lead to a new global equilibrium in the distribution of aid that neglects recipients that are sites of mutually beneficial foreign policy goals---not only among traditional donors, but also between these donors and Beijing.
+
+
+### Welfare Analysis
+
+Among the cases considered above, the last one in particular underlines that as donors seek to maximize their own foreign policy interests, their individual best-responses may lead them to distribute aid in ways that are collectively inefficient.\footnote{I use \textit{Pareto} interchangeably with \textit{collectively}.} The (in)efficiency of the equilibrium solutions the model predicts can be evaluated by comparing the sum of actors' utilities under Nash behavior relative to the sum of their utilities under some alternative maximizing principal, say:
+$$
+\max_{x_i,x_j,y_i,y_j \in [0, 1]} u_i(X_i, Y_i) + u_j(X_j, Y_j), \tag{25}
+$$
+subject to 
+$$x_i + x_j + y_i + y_j \leq R_i + R_j = 1. \tag{26}$$
+In this formulation, the objective is to maximize the combined utility of donors $i$ and $j$ by finding the optimal distribution of their combined aid budgets. This can be done by forming the Lagrangian
+$$
+\begin{aligned}
+\mathcal{L} & = u_i(x_i + \eta^x x_j,y_i + \eta^yy_j) + u_j(x_j + \eta^x x_i,y_j + \eta^yy_i) \\
+& \quad +\lambda^R(1 - x_i - y_i - x_j - y_j) + \lambda_i^x x_i + \lambda_i^y y_i + \lambda_j^x x_j + \lambda_j^y y_j,
+\end{aligned}\tag{27}
+$$
+with KKT conditions:
+$$
+\begin{aligned}
+& \frac{\partial \mathcal{L}}{\partial x_i} \geqslant 0 \quad x_i \geqslant 0 \quad \lambda_i^x \geqslant 0 \quad \lambda^xx_i = 0, \\
+& \frac{\partial \mathcal{L}}{\partial y_i} \geqslant 0 \quad y_i \geqslant 0 \quad \lambda_i^y \geqslant 0 \quad \lambda^yy_i = 0, \\
+& \frac{\partial \mathcal{L}}{\partial x_j} \geqslant 0 \quad x_j \geqslant 0 \quad \lambda_j^x \geqslant 0 \quad \lambda^xx_i = 0, \\
+& \frac{\partial \mathcal{L}}{\partial y_j} \geqslant 0 \quad y_j \geqslant 0 \quad \lambda_i^y \geqslant 0 \quad \lambda^yy_i = 0, \\
+& 1 - x_i - y_i - x_j - y_j \geqslant 0 \quad \lambda^R \geqslant 0 \quad \lambda^R(1 - x_i - y_i - x_j - y_j) = 0.
+\end{aligned}\tag{28}
+$$
+Since, like the individual optimization problem, this collective optimization problem is concave, we are assured the existence of a unique vector of maximizers $(x_i^o, x_j^o, y_i^o, y_j^o)$.\footnote{Since the returns to scale in the Cobb-Douglas utilities are diminishing, they are concave. Because the collective utility function is the sum of these concave utility functions, it also is concave.} This solution is Pareto improves on a Nash equilibrium if this vector yields greater payoffs for *at least one* of the actors, and leaves the other at least as well off relative to a Nash alternative.
+
+Importantly, the collectively solution is, by definition, Pareto optimal. However, many solutions in a given game may be Pareto optimal---including a Nash equilibrium. So, for the welfare analysis, we are most interested in knowing whether an efficient collective solution Pareto improves on a Nash equilibrium solution. The condition for this is:
+$$u_k^o \geqslant u_k^n \quad \forall \quad k \in \{i, j \} \quad \land \quad u_m^o > u_m^n \quad \text{for at least one } m \in \{i, j \}\tag{29}$$
+where the $o$ superscript denotes utility for donors when collective utility is maximized, and the $n$ superscript denotes utility for donors in equilibrium. In words, the collective solution must improve utility for at least one of the donor governments, and at minimum not change utility for the other. If this condition fails to be met, then the Nash solution, in addition to the collective solution, is Pareto efficient.
+
+```{r}
+source(here("03_sourcecode/nash_analysis.R"))
+load(here("03_sourcecode/search_grid.R"))
+search_grid <- search_grid %>%
+  mutate(
+    nui = ifelse(is.nan(nui), 0, exp(nui)),
+    nuj = ifelse(is.nan(nuj), 0, exp(nuj)),
+    oui = ifelse(is.nan(oui), 0, exp(oui)),
+    ouj = ifelse(is.nan(ouj), 0, exp(ouj))
+  )
+```
+
+An example of a how $i$'s and $j$'s equilibrium responses fare with respect to collective utility is shown in Figure 1.9. The reaction paths of countries $i$ and $j$ are shown with respect to recipient $x$ (the left panel) and recipient $y$ (the right panel). The blue line denotes $i$'s best response, and the red line denotes $j$'s. The Nash equilibrium solution lies at the intersection of their best responses. The collectively optimal solution is also shown. This point lies at the convergence of the concentric bands shown in the figure. These bands are isoquants denoting collective utility.
+
+For this example, $i$ and $j$ have an equal share of resources ($R_i = 1/2$) and different priorities over recipients, $\sigma_i^x = 3/4$ and $\sigma_j^x = 1/4$. Further, the externalities with respect to recipient $x$ and with respect to recipient $y$ not only differ in magnitude, but direction ($\eta^x = -1/3$ and $\eta^y = 1/4$). Given this arrangement of parameters, the actors have *different* best-responses. While $i$'s reaction path is positive, $j$'s is negative. That is, $i$ gives more aid where $j$ gives more, but $j$ gives more aid where $i$ gives less. In equilibrium, however, despite the different best-responses of the donors, both nonetheless end up giving *more* aid to $x$ and *less* aid to $y$ than is most collectively efficient. This is shown in the left panel of the figure by the fact that the Nash equilibrium lies up and to the right of the collectively optimal solution. Further, in the right panel of the figure, the Nash equilibrium lies down and to the left of the collectively optimal solution.
+
+```{r, fig.height=3.75, fig.width = 8, fig.cap="Equilibrium allocations relative to the collective optimum. Results shown for *competitors*. NE = Nash Equilibrium. CO = Collective Optimum. \\textcolor{blue}{Blue} denotes donor $i$, and \\textcolor{red}{Red} denotes donor $j$."}
+sigix <- 3/4
+sigjx <- 1/4
+etax <- -1/3
+etay <- 1/4
+Ri <- 1/2
+reactions <- react_paths(
+  sigix = sigix,
+  sigjx = sigjx,
+  etax = etax,
+  etay = etay
+)
+nash <- nash_eq(
+  Ri = Ri,
+  sigix = sigix,
+  sigjx = sigjx,
+  etax = etax,
+  etay = etay
+)
+opt <- find_optimum(
+  Ri = Ri,
+  sigix = sigix,
+  sigjx = sigjx,
+  etax = etax,
+  etay = etay
+)$par
+con_prep1 <- collective_utility(
+  sigix = sigix,
+  sigjx = sigjx,
+  Ri = Ri,
+  etax = etax,
+  etay = etay,
+  bins = 100
+)$U %>%
+  prep_for_contour() 
+ggplot(con_prep1) +
+  geom_contour(
+    aes(donor_i, donor_j, z = utility),
+    binwidth = 0.0001,
+    breaks = quantile(con_prep1$utility, na.rm = TRUE, c(0.5, 0.7, 0.9, 0.95)),
+    color = "grey"
+  ) +
+  geom_abline(
+    intercept = nash$x[2] - reactions$Reaction[1] * nash$x[1],
+    slope = reactions$Reaction[1],
+    size = 1,
+    col = "red"
+  ) +
+  geom_abline(
+    intercept = nash$x[2] - 1/reactions$Reaction[2] * nash$x[1],
+    slope = 1/reactions$Reaction[2],
+    size = 1,
+    col = "blue"
+  ) +
+  geom_point(
+    aes(x = nash$x[1], y = nash$x[2]),
+    size = 2
+  ) +
+  geom_point(
+    aes(x = opt[1], y = opt[2]),
+    shape = 10,
+    size = 2
+  ) +
+  labs(
+    x = expression(x[i]),
+    y = expression(x[j]),
+    title = "Recipient x"
+  ) +
+  ##xlim(c(0.45, 0.5)) +
+  ##ylim(c(0, 0.05)) +
+  ggridges::theme_ridges() +
+  theme(
+    axis.title.x = element_text(color = "blue"),
+    axis.title.y = element_text(
+      color = "red",
+      angle = 360, vjust = 1
+    ),
+    axis.text = element_blank(),
+    axis.line = element_line(),
+    panel.grid = element_blank(),
+    axis.ticks = element_blank()
+  ) -> p1
+
+con_prep2 <- collective_utility(
+  sigix = sigix,
+  sigjx = sigjx,
+  Ri = Ri,
+  etax = etax,
+  etay = etay,
+  bins = 100
+)$U %>%
+  prep_for_contour() 
+ggplot(con_prep2) +
+  geom_contour(
+    aes(Ri - donor_i, (1 - Ri) - donor_j, z = utility),
+    binwidth = 0.0001,
+    breaks = quantile(con_prep2$utility, na.rm=TRUE, c(0.5, 0.7, 0.9, 0.95)),
+    color = "grey"
+  ) +
+  geom_abline(
+    intercept = nash$y[2] - reactions$Reaction[1] * nash$y[1],
+    slope = reactions$Reaction[1],
+    size = 1,
+    col = "red"
+  ) +
+  geom_abline(
+    intercept = nash$y[2] - 1/reactions$Reaction[2] * nash$y[1],
+    slope = 1/reactions$Reaction[2],
+    size = 1,
+    col = "blue"
+  ) +
+  geom_point(
+    aes(x = nash$y[1], y = nash$y[2]),
+    size = 2
+  ) +
+  geom_point(
+    aes(x = Ri - opt[1], y = (1 - Ri) - opt[2]),
+    shape = 10,
+    size = 2
+  ) +
+  labs(
+    x = expression(y[i]),
+    y = expression(y[j]),
+    title = "Recipient y"
+  ) +
+  ##xlim(c(0, 0.05)) +
+  ##ylim(c(0.45, 0.5)) +
+  ggridges::theme_ridges() +
+  theme(
+    axis.title.x = element_text(color = "blue"),
+    axis.title.y = element_text(
+      color = "red",
+      angle = 360, vjust = 1
+    ),
+    axis.text = element_blank(),
+    axis.line = element_line(),
+    panel.grid = element_blank(),
+    axis.ticks = element_blank()
+  ) -> p2
+gridExtra::grid.arrange(
+  p1 +
+    annotate(
+      "text",
+      c(0.325, 0.425),
+      c(0.2, 0.26),
+      label = c("CO", "NE")
+    ), 
+  p2, 
+  ncol = 2
+)
+```
+
+
+The equilibrium that emerges in this particular case is intuitive. The actors receive rival foreign policy gains in giving aid to $x$, and common foreign policy gains in giving aid to $y$. As a result, their individual best-response is to give more aid to $x$ than is collectively optimal. This leaves less available resources for giving aid to $y$. 
+
+This is a clear instance of the classic Prisoners' Delimma. While this behavior is individually rational, it is collectively inefficient. Both $i$ and $j$ could be made better off if they would mutually transfer some aid from $x$ to $y$. This more efficient solution, unfortunately, is inconsistent with each donor's individual self-interest. 
+
+However, lest any wonder whether this exercise represents little more than a fanciful technical means of arriving at a Prisoners' Delimma, the reader should note that not all cases in the parameter space are such that collective optimization Pareto improves on uncoordinated Nash equilibria. In fact, a numerical grid search over the possible parameter space shows that in just over 51$\%$ of cases is the collective solution Pareto superior to Nash equilibrium. Appendix II shows more results from this grid search. Interested readers are encouraged to go there to see the full set of results.
+
+Figure 1.10 highlights one such example where collective optimization fails to improve on a equilibrium solution. For this case, $\sigma_i^x = 0.2$, $\sigma_j^x = 0.1$, $\eta^x = -0.2$, $\eta^y = 0.1$, and $R_i = 0.5$. As noted in the figure, donor $i$ does better in equilibrium while $j$ does better under collective optimization. Such a scenario would make the choice to adopt a collaborative solution a source of conflict between the donors. Either they could adopt a collective solution at $i$'s expense, or they could remain in equilibrium at $j$'s.
+
+This scenario highlights a strategic context that often goes unaddressed in debates about donor collaboration. Cooperation is not guaranteed to work to the mutual benefit of all parties. The implications of this are beyond the scope of this analysis, but as a normative matter it suggests that cooperation may require the application of external incentives to support. Otherwise, proposed collective solutions, whatever they are, will be as good as dead on arrival. 
+
+```{r, fig.height=3.75, fig.width = 8, fig.cap="Equilibrium allocations relative to the collective optimum. Results shown for *competitors*. NE = Nash Equilibrium. CO = Collective Optimum. \\textcolor{blue}{Blue} denotes donor $i$, and \\textcolor{red}{Red} denotes donor $j$. In this case donor $i$ is better off in equilibrium while $j$ is better off under collective optimization."}
+sigix <- .2
+sigjx <- .1
+etax <- -.2
+etay <- .1
+Ri <- 1/2
+
+reactions <- react_paths(
+  sigix = sigix,
+  sigjx = sigjx,
+  etax = etax,
+  etay = etay
+)
+nash <- nash_eq(
+  Ri = Ri,
+  sigix = sigix,
+  sigjx = sigjx,
+  etax = etax,
+  etay = etay
+)
+opt <- find_optimum(
+  Ri = Ri,
+  sigix = sigix,
+  sigjx = sigjx,
+  etax = etax,
+  etay = etay
+)$par
+con_prep1 <- collective_utility(
+  sigix = sigix,
+  sigjx = sigjx,
+  Ri = Ri,
+  etax = etax,
+  etay = etay,
+  bins = 100
+)$U %>%
+  prep_for_contour() 
+ggplot(con_prep1) +
+  geom_contour(
+    aes(donor_i, donor_j, z = utility),
+    binwidth = 0.0001,
+    breaks = quantile(con_prep1$utility, na.rm = TRUE, c(0.5, 0.7, 0.9, 0.95)),
+    color = "grey"
+  ) +
+  geom_abline(
+    intercept = nash$x[2] - reactions$Reaction[1] * nash$x[1],
+    slope = reactions$Reaction[1],
+    size = 1,
+    col = "red"
+  ) +
+  geom_abline(
+    intercept = nash$x[2] - 1/reactions$Reaction[2] * nash$x[1],
+    slope = 1/reactions$Reaction[2],
+    size = 1,
+    col = "blue"
+  ) +
+  geom_point(
+    aes(x = nash$x[1], y = nash$x[2]),
+    size = 2
+  ) +
+  geom_point(
+    aes(x = opt[1], y = opt[2]),
+    shape = 10,
+    size = 2
+  ) +
+  labs(
+    x = expression(x[i]),
+    y = expression(x[j]),
+    title = "Recipient x"
+  ) +
+  ##xlim(c(0.45, 0.5)) +
+  ##ylim(c(0, 0.05)) +
+  ggridges::theme_ridges() +
+  theme(
+    axis.title.x = element_text(color = "blue"),
+    axis.title.y = element_text(
+      color = "red",
+      angle = 360, vjust = 1
+    ),
+    axis.text = element_blank(),
+    axis.line = element_line(),
+    panel.grid = element_blank(),
+    axis.ticks = element_blank()
+  ) -> p1
+
+con_prep2 <- collective_utility(
+  sigix = sigix,
+  sigjx = sigjx,
+  Ri = Ri,
+  etax = etax,
+  etay = etay,
+  bins = 100
+)$U %>%
+  prep_for_contour() 
+ggplot(con_prep2) +
+  geom_contour(
+    aes(Ri - donor_i, (1 - Ri) - donor_j, z = utility),
+    binwidth = 0.0001,
+    breaks = quantile(con_prep2$utility, na.rm=TRUE, c(0.5, 0.7, 0.9, 0.95)),
+    color = "grey"
+  ) +
+  geom_abline(
+    intercept = nash$y[2] - reactions$Reaction[1] * nash$y[1],
+    slope = reactions$Reaction[1],
+    size = 1,
+    col = "red"
+  ) +
+  geom_abline(
+    intercept = nash$y[2] - 1/reactions$Reaction[2] * nash$y[1],
+    slope = 1/reactions$Reaction[2],
+    size = 1,
+    col = "blue"
+  ) +
+  geom_point(
+    aes(x = nash$y[1], y = nash$y[2]),
+    size = 2
+  ) +
+  geom_point(
+    aes(x = Ri - opt[1], y = (1 - Ri) - opt[2]),
+    shape = 10,
+    size = 2
+  ) +
+  labs(
+    x = expression(y[i]),
+    y = expression(y[j]),
+    title = "Recipient y"
+  ) +
+  ##xlim(c(0, 0.05)) +
+  ##ylim(c(0.45, 0.5)) +
+  ggridges::theme_ridges() +
+  theme(
+    axis.title.x = element_text(color = "blue"),
+    axis.title.y = element_text(
+      color = "red",
+      angle = 360, vjust = 1
+    ),
+    axis.text = element_blank(),
+    axis.line = element_line(),
+    panel.grid = element_blank(),
+    axis.ticks = element_blank()
+  ) -> p2
+gridExtra::grid.arrange(
+  p1 +
+    annotate(
+      "text",
+      c(.05, .17),
+      c(0.04, 0.13),
+      label = c("j is\nbetter off", "i is\nbetter off")
+    ), 
+  p2, 
+  ncol = 2
+)
+```
+
+
+The analysis in Appendix II provides some additional insights. For instance, in the set of cases where collective optimization yields solutions that are better for one donor, but leave the other worse off, larger donors tend to do better under collective optimization (but not always), while smaller donors tend to do better in Nash equilibrium (but not always). This fact suggests some interesting power dynamics in efforts to spur greater donor cooperation. Perhaps this even offers some hope for future collaboration. If larger donors have a greater propensity to benefit from collective solutions, they may also have the resources necessary to make the adoption of a collective solution incentive compatible for small reluctant donors.
+
+
+### Empirical Implications
+
+The above analyses provide valuable insight into the ways strategic interdependence shapes donor allocation decisions and relates to welfare. But for those who are more empirically minded, these results may be leave something to be desired. However, there are some empirical implications that follow from this model.
+
+The first, and most basic, is that strategic interdependence leads donor governments to give aid in ways that deviate from their priorities. So long as the externality parameters are non-zero, donors will always have a rational incentive to adjust how they distribute aid in the face of one another. As an empirical matter, this implies two things: (1) that the aid given by other donors in developing countries plays a role in determining how much aid an individual donor commits and (2) failure to account for this can lead to mis-identification of how donors distribute aid on the basis of what they value in their foreign policies. Donors may give more or less aid in recipients than we would expect given their priorities over recipients (as captured by the $\sigma$ parameters). In a regression analysis, it would be all-too-easy to over or under estimate the importance donors attribute to certain determinants of aid allocation. This is an issue that I consider in Chapter 3.
+
+A second implication is that different kinds of objectives---whether they are rival or common in nature---imply different donor responses to other-donor aid given in developing countries. When objectives are rival, an increase in donor giving increases the marginal utility of giving aid in a recipient. Conversely, when objectives are common, an increase in donor giving decreases the marginal utility of giving aid in a recipient.
+
+But, as the typology of donor relationships---*friends*, *competitors*, and *adversaries*---highlights, how these different incentives balance out can be complicated. When donors are either friends or adversaries, their incentives are straightforward. In the former case, they will give less aid in the recipient where the other donor gives more. In the latter case, they will give less aid in the recipient where the other donor gives less. But, when they are competitors, one might have a negative response to other-donor aid, and the other may have a positive response. Or, both might have the same response; however, the direction of this response cannot on its own be used to draw conclusions about the strategic valence of donor goals in recipients.
+
+This fact highlights a potential challenge in drawing inferences from donor responses in an empirical analysis. However, there are strategies that could be applied to ensure a more informative analysis. If the model is generalized to a greater number of recipients, much of the logic that applies for *friends* or *adversaries* is also localized to pairs or groups of recipients where donor goals are either common or rival. Meanwhile, the logic that applies for *competitors* also holds for donor decisions between pairs or groups of recipients where objectives are common with respect to one set, and rival with respect to another.
+
+Suppose, for example, that $i$ and $j$ are *competitors*, and that they allocate aid to four recipients; not just two. In this case, $i$ has the following marginal utilities over recipients:
+$$
+\begin{aligned}
+MU_i^w & = \frac{\sigma_i^w}{w_i + \eta^w w_j} \\
+MU_i^x & = \frac{\sigma_i^x}{x_i + \eta^x x_j} \\
+MU_i^y & = \frac{\sigma_i^y}{y_i + \eta^y y_j} \\
+MU_i^z & = \frac{\sigma_i^z}{z_i + \eta^z z_j}. \\
+\end{aligned} \tag{30}
+$$
+Suppose $\eta^w, \eta^x > 0$, while $\eta^y, \eta^z < 0$. Any transfer that $j$ makes to either recipient $w$ or $x$ will reduce $i$'s marginal utility for giving aid to those recipients, while any transfer of aid to either $y$ or $z$ will increase $i$'s marginal utility of giving aid to either of them. If this transfer is made between, say $w$ and $y$, then whether $i$ has an incentive to increase aid to one and decrease aid to the other is impossible to know without reference to $i$'s preferences and the precise values of the externality parameters. But, if a transfer is made between $w$ and $x$, or between $y$ and $z$, $i$'s incentives are far more certain. A change in $j$'s allocation of aid between $w$ and $x$ would lead to substitution by $i$ between those recipients. Further, a change in $j$'s allocation of aid between $y$ and $z$ would lead to complementarity by $i$ between those recipients.
+
+This observation of course falls short of identifying $i$'s equilibrium response, but the comparative statics here are of greater consequence than precise predictions. How $i$ distributes aid *between* recipients where $j$'s aid generates the same type of externality---rival or common---will be consistent, even if the choice between recipients where $j$'s aid generates different types of externalities will not. This is advantageous for large-$n$ empirical analysis. Provided the appropriate comparisons in donor giving between recipients can be made, it is in principal possible to identify when and where donors take advantage of, or seek advantage over, one another. This again is the subject of Chapter 3.
+
+Finally, the model offers some predictions for when and where we can expect donor governments to specialize and dominate in developing countries. This issue is taken up in Chapter 4. As was noted in earlier discussion of donor best-responses, donors with greater resources are, for obvious reasons, more apt to dominate in their aid giving. But, beyond this fact, we should particularly observe wealthier donors take the lead in developing countries where their interests are greatest. In such cases, others should struggle to compete or else be most apt to have incentives to pass the buck.
+
+
+## Stylized Examples
+
+### Cooperation with China
+
+```{r, fig.height=4, fig.width=6, fig.cap='The shifting calculus of "contested cooperation" as the PRC has a greater share of resources relative to the USA.'}
+utility <- function(
+    xi, xj, yi, yj,
+    sigxi = 1/3,
+    sigxj = 2/3,
+    etax = -1/2,
+    etay = 1/2) {
+  ui <- ((xi + etax * xj)^sigxi) *
+    ((yi + etay * yj)^(1 - sigxi))
+  uj <- ((xj + etax * xi)^sigxj) *
+    ((yj + etay * yi)^(1 - sigxj))
+  return(
+    data.frame(
+      ui = ifelse(is.nan(ui), 0, ui),
+      uj = ifelse(is.nan(uj), 0, uj)
+    )
+  )
+}
+sigxi = 1/3
+sigxj = 2/3
+etax = -1/2
+etay = 1/2
+Ri <- seq(1/3, .66, len = 200)
+lapply(
+  Ri,
+  function(r) nash_eq(
+    Ri = r,
+    sigix = sigxi,
+    sigjx = sigxj,
+    etax = etax,
+    etay = etay
+  )
+) %>% bind_rows() %>%
+  mutate(
+    rows = rep(1:(n()/2), each = 2)
+  ) %>%
+  group_by(rows) %>%
+  pivot_wider(
+    names_from = donor,
+    values_from = x:y
+  ) %>%
+  ungroup %>%
+  mutate(
+    Ri = Ri
+  ) -> nash_out
+lapply(
+  nash_out$rows,
+  function(r) utility(
+    xi = nash_out$x_i[r],
+    xj = nash_out$x_j[r],
+    yi = nash_out$y_i[r],
+    yj = nash_out$y_j[r]
+  )
+) %>% bind_rows() -> nash_u
+lapply(
+  Ri,
+  function(r) {
+    xs <- find_optimum(
+      Ri = r,
+      sigix = sigxi,
+      sigjx = sigxj,
+      etax = etax,
+      etay = etay
+    )$par
+    ys <- c(r, 1 - r) - xs
+    data.frame(
+      donor = c('i', 'j'),
+      x = xs,
+      y = ys
+    )
+  }
+) %>% bind_rows() %>%
+  mutate(
+    rows = rep(1:(n()/2), each = 2)
+  ) %>%
+  group_by(rows) %>%
+  pivot_wider(
+    names_from = donor,
+    values_from = x:y
+  ) %>%
+  ungroup %>%
+  mutate(
+    Ri = Ri
+  ) -> pareto_out
+lapply(
+  nash_out$rows,
+  function(r) utility(
+    xi = pareto_out$x_i[r],
+    xj = pareto_out$x_j[r],
+    yi = pareto_out$y_i[r],
+    yj = pareto_out$y_j[r]
+  )
+) %>% bind_rows() -> pareto_u
+nash_u %>%
+  mutate(
+    oi = pareto_u$ui,
+    oj = pareto_u$uj
+  ) %>%
+  mutate(
+    di = oi - ui,
+    dj = oj - uj,
+    Ri = Ri
+  ) -> out
+out %>%
+  pivot_longer(
+    cols = 1:6
+  ) -> out
+ggplot(out%>% filter(name%in%c("di","dj"))) +
+  geom_line(
+    aes(
+      x = 1-Ri,
+      y = value,
+      group = name,
+      color = ifelse(value < 0, '(-)', '(+)')
+    ),
+    size = 1
+  ) + 
+  scale_color_manual(
+    values = c('firebrick','darkblue')
+  )+
+  geom_hline(
+    yintercept = 0
+  ) +
+  labs(
+    x = expression(R[PCR]),
+    y = "Utility under Collective vs. Nash Solution",
+    color = NULL
+  ) +
+  scale_x_continuous(
+    breaks = c(1/3, 0.5, 0.66),
+    labels = c('1/3','1/2','2/3'),
+    limits = c(1/3, .7)
+  ) +
+  scale_y_continuous(
+    breaks = 0
+  ) +
+  annotate(
+    'text',
+    x = 0.67,
+    y = range(out$value[out$name%in%c('di','dj')]),
+    label = c('PCR','USA'),
+    hjust = 0,
+    color = 'grey10'
+  ) +
+  ggridges::theme_ridges() 
+```
+
+
+## Conclusion
+
+Despite the illumination cast by a now mammoth body of research, deep understanding of the strategic relationships that exist among donor governments has tended to elude either the grasp or interest of political scientists and economists. Much like @alesinaDollar2000 do in their widely cited "Who Gives Foreign Aid to Whom and Why?" the bulk of studies on this issue emphasize donors' political goals and recipients' needs and policies, leaving a gaping lacuna where donor interests vis-$\grave{\text{a}}$-vis each other ought to go. This is problematic, because strategic interdependence leads to deviations between donor priorities and how they actually distribute international aid. Failing to account for this can lead to mis-identification of what donors value in empirical analyses. 
+
+Efforts to untangle strategic interactions among donors exist, but none adopt such a general strategic political economy framework as that introduced here. With the help of a two-by-two model of aid allocation, the implications of donors pursuing a possibly mixed bag of common and rival objectives through their aid giving was demonstrated. Among the three possible strategic relationships in the model, donors-as-*competitors* is an especially apt analogue for interactions among donor governments. As donors compete to maximize their foreign policy goals through giving aid, they simultaneously have incentives to take advantage of a peer's generosity when they reap common benefits from their aid to one recipient, and incentives to seek advantage in giving aid to a recipient that is a site of rival objectives. 
+
+Equilibria emerge under a wide array of strategic responses. Both donors might engage in competition---giving more aid where the other donor gives more. Or they both might pass the buck---giving less aid where the other donor gives more. Or one might respond competitively to the aid of the other, while the other responds deferentially to the aid of the one. These different incentives highlight potential problems for empirical analysis of donor responses. Unless appropriate comparisons can be identified, it is not possible to reliably infer the strategic valence of donor objectives from estimated reaction slopes.
+
+With respect to welfare, regardless of the direction of actor's best-responses, in many cases competitive waste was observed: either one or both donors gave more aid than was efficient to the recipient that was a source of rival foreign policy interests, and by extension too little aid than was efficient to the recipient where donors had mutually beneficial objectives. In these cases, the strategic environment between donors produces what is essentially a Prisoners' Delimma between donors. However, the location of a Pareto improving solution may not be intuitive. Because the direction of donors' reaction pathers is not guaranteed to provide information about the strategic valence of peer aid in recipients, it is possible that donors might have negatively sloped reaction paths yet nonetheless over commit resources in a recipient.
+
+Even more, Pareto improving collective solutions are not guaranteed. Rather, in a significant share of the parameter space collective optimization fails to yield Pareto improvements over equilibrium behavior. While one donor does better with a collective solution, the other does better in an uncooperative equilibrium. 
+
+These facts highlight salient stumbling blocks to donor collaboration. Though the task of institution design is beyond the scope of this chapter, the findings presented here highlight factors that any institution would need to account for if it is to succeed. Most salient among these factors is the observation that donors can have conflicting preferences between a collective and individual solution. While the model presented here provides no resources that would remedy this problem, it is possible to think of extensions to this basic framework that may permit, for example, Ricardian inspired solutions in the form of trade or exchange of aid flows. At any rate, a well designed institution in this space will not merely provide a channel of communication among donors to allow them to converge on a collectively optimal solution; it will support credible exchanges of aid flow between donor governments that ensure collective solutions are incentive compatible for all.
+
+While this study does not answer all questions, or even provide satisfying solutions, it provides a framework for grappling with the consequences of strategic interdependence for the distribution of global development assistance. Until the problem is adequately defined, solutions will remain elusive.
+
+In the remainder of this dissertation, I turn to consider the empirical implications that follow from this analysis. In Chapter 3 I examine patterns in strategic interdependence, what they tell us about the objectives of donor governments, and how accounting for interdependence can inform our understanding of the drivers of international aid. It is here that I flesh out with greater specificity when and where the strategic valence of donor goals should be rival or common. In Chapter 4, I turn to consider how strategic dynamics shape when and where donor governments hold lead donorship in developing countries. But, before conducting these analyses, I first need to construct measures that will help me detect signals about the interest-based and needs-based considerations that influence donor priorities. This is the subject of the next chapter (Chapter 2).
+
+
+## Appendix I
+
+### Proof for Proposition 1
+
+**Proof** Following @cachonNetessine2004, a sufficient condition for a unique Nash equilibrium is that, for each actor the absolute value of their best-response slope is less than 1. That is:
+$$\left| \frac{\partial x_i^*}{\partial x_j} \right| < 1 \space \forall \space i : i \neq j. \tag{A.1}$$
+It is simple enough to demonstrate that this condition holds for the two-donor, two-recipient model detailed here. Recall that $\delta_2$ denotes the slope of $i$'s reaction to $j$. We may add $i$ and $j$ subscripts to clarify that $j$ has a similar parameter denoting its response to $i$: hence, $\delta_{i2}$ and $\delta_{j2}$.
+
+For country $i$, the identity of its reaction parameter is given as
+$$\delta_{i2} = \sigma_i^x(\eta^x - \eta^y) - \eta^x.\tag{A.2}$$
+From this identity, it follows that $-1 < \delta_{i2} < 1$ for all possible values of the parameters $\sigma_i^x$, $\eta^x$ and $\eta^y$. This can be seen by observing the value of the reaction parameter at the limits of each $\eta$ and at the limit of $\sigma_i^x$. 
+
+First, note that $\sigma_i^x \in (0,1)$. This means that at the boundaries of this parameter, the identity of $\delta_{i2}$ converges to either $-\eta^x$ (as $\sigma_i^x \to 1$), or $-\eta^y$ (as $\sigma_i^x \to 0$).
+
+From this, it then follows that the absolute magnitude of $i$'s reaction parameter is limited to being no greater than that of the externality parameters. These, recall, are bound such that $\eta^x,\eta^y \in (-1, 1)$. This therefore implies that, at the limits of the model parameters, $\delta_{i2} \in (-1, 1)$. By symmetry, this necessarily implies that $j$'s reaction is similarly bound. 
+
+Together, this meets the conditions for a unique Nash equilibrium. Therefore, the model will always have a unique Nash equilibrium solution. \qed
+
+### Proof for Proposition 2
+
+**Proof** Smoothness with respect to the model parameters is demonstrated by simply considering $i$'s (and by symmetry $j$'s) Nash equilibrium best-response $x_i^*$. The closed-form solution for this is given by
+$$x_i^* = \frac{\delta_{i0} + \delta_{i1} R_i + \delta_{i2} (\delta_{j0} + \delta_{j1} R_j)}{1 - \delta_{i2}\delta_{j2}}.\tag{A.3}$$
+From this, it is easy enough to demonstrate that $x_i^*$ is a smooth function of the model parameters; though, an important caveat is that this smoothness is bound to best-responses such that $0 \leqslant x_i^* \leqslant R_i$. Within this range, $x_i^*$ is differentiable with respect to the $\delta$s---and hence $\sigma_i^x$, $\sigma_j^x$, $\eta^x$, $\eta^y$---and the distribution of resources $R_i$. \qed
+
+
+
+\clearpage
+
+## References
